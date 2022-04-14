@@ -129,14 +129,23 @@ const addMetadata = (_dna, _edition) => {
   let dateTime = Date.now();
   let tempMetadata = {
     name: `${namePrefix} #${_edition}`,
-    description: description,
-    image: `${baseUri}/${_edition}.png`,
-    attributes: attributesList,
-    dna: sha1(_dna),
     edition: _edition,
-    ...extraMetadata,
+    description: description,
     date: dateTime,
-    compiler: "HashLips Art Engine - codeSTACKr Modified",
+    dna: sha1(_dna),
+    image: `${baseUri}/${_edition}.png`,
+    creators: [
+      {
+        Artist: "Munis Mahmood",
+        address: "0x66Aa14BfF66cb6BD7c11CA5FE5F427ea7BD40c1f",
+        share: 1000,
+        compiler: "GIGO_GOOFY ART ENGINE",
+      },
+    ],
+    attributes: attributesList,
+    
+    ...extraMetadata,
+    
   };
   if (network == NETWORK.sol) {
     tempMetadata = {
